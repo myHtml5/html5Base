@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>jQuery Mobile 页面跳转</title>
+    <link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.4.5.min.css">
+    <script src="js/jquery-2.2.1.min.js"></script>
+    <script src="js/jquery.mobile-1.4.5.min.js"></script>
+</head>
+<body>
+    <!--HTML5 data-* 属性用于通过 jQuery Mobile 为移动设备创建“对触控友好的”交互外观。-->
+    <!--data-role="page" 是显示在浏览器中的页面-->
+    <div data-role="page" id="one">
+        <!--data-role="header" 创建页面上方的工具栏（常用于标题和搜索按钮）-->
+        <div data-role="header">
+            <h1>首页</h1>
+        </div>
+        <!--data-role="content" 定义页面的内容，比如文本、图像、表单和按钮，等等-->
+        <div data-role="content">
+            内面内容
+            <a href="#two" data-transition="slide">跳转到第二页</a>
+            <a href="#three" data-rel="dialog">跳转到第三页</a>
+        </div>
+        <!--data-role="footer" 创建页面底部的工具栏-->
+        <div data-role="footer">
+            <h1>页脚</h1>
+        </div>
+    </div>
+    <div data-role="page" id="two">
+        <div data-role="header">
+            <h1>第二页</h1>
+        </div>
+        <div role="main">
+            内面内容
+            <a href="#one" data-transition="slide" data-direction="reverse">返回到首页</a>
+        </div>
+        <div data-role="footer">
+            <h1>页脚</h1>
+        </div>
+    </div>
+    <div data-role="page" id="three">
+        <div data-role="header">
+            <h1>第二页</h1>
+        </div>
+        <div role="main">
+            内面内容
+            <a href="#one" data-transition="slide" data-direction="reverse">返回到首页</a>
+        </div>
+        <div data-role="footer">
+            <h1>页脚</h1>
+        </div>
+    </div>
+
+    <!--
+        data-transition 过渡效果
+        fade	默认。淡入淡出到下一页。
+        flip	从后向前翻动到下一页。
+        flow	抛出当前页面，引入下一页。
+        pop	像弹出窗口那样转到下一页。
+        slide	从右向左滑动到下一页。
+        slidefade	从右向左滑动并淡入到下一页。
+        slideup	从下到上滑动到下一页。
+        slidedown	从上到下滑动到下一页。
+        turn	转向下一页。
+        none	无过渡效果。
+    -->
+</body>
+</html>

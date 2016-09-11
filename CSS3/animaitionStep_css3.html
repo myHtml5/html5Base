@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS3动画 -  使用steps方法控制帧渲染</title>
+    <style>
+
+        div{
+            width: 200px;
+            height: 200px;
+            background-color: orange;
+        }
+
+        /*定义动画*/
+        @keyframes myAnim {
+            from {width: 200px;}
+            to {width: 400px;}
+        }
+        @-webkit-keyframes myAnim {
+            from {width: 200px;}
+            to {width: 400px;}
+        }
+        @-moz-keyframes myAnim {
+            from {width: 200px;}
+            to {width: 400px;}
+        }
+        @-o-keyframes myAnim {
+            from {width: 200px;}
+            to {width: 400px;}
+        }
+
+        /*使用动画  普通动画*/
+        #logo{
+            animation: myAnim 10s 10;
+            -webkit-animation:  myAnim 10s 10;
+            -moz-animation:  myAnim 10s 10;
+            -o-animation:  myAnim 10s 10;
+        }
+
+        /*使用动画 使用steps方法控制帧频率*/
+        #logo-step{
+            animation: myAnim 10s steps(10) 10; /*定义了10秒内，使用steps方法渲染10个动画帧*/
+            -webkit-animation:  myAnim 10s steps(10) 10;
+            -moz-animation:  myAnim 10s steps(100) 10;
+            -o-animation:  myAnim 10s steps(10) 10;
+        }
+
+
+    </style>
+
+</head>
+<body>
+    <div id="logo">
+
+    </div>
+    <br>
+    <div id="logo-step">
+
+    </div>
+
+</body>
+</html>

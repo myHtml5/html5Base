@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS3实战 - 缩放式菜单</title>
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+
+        body{
+            font-family: 'microsoft yahei',Arial,sans-serif;
+            background: #aaa;
+        }
+
+        section{
+            position:relative;
+            width: 100%;
+        }
+
+        section.main{
+            position: absolute;
+            top:50%;
+            left:50%;
+            transform: translate(-50%,-50%);
+            width:50%;
+            max-width:30em;
+            min-width:15em;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        section.main > header{
+            background: orange;
+            color: #fff;
+            line-height: 1.2em;
+            text-align:center;
+        }
+
+        section section:last-child{
+            border:none;
+        }
+
+        section > div{
+
+            overflow: hidden;
+            transition: all .4s ease-in-out;
+        }
+
+        article,
+        header {
+            padding: 1em;
+            line-height: 1em;
+        }
+
+        header:not(.title) {
+            width: 100%;
+            overflow: hidden;
+            height: 3em;
+            background: #EFEFEF;
+            cursor: pointer;
+            color: #888;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            padding-right: 2.1em;
+        }
+
+        header:not(.title):hover {
+            background: #E8E8E8;
+        }
+
+        article {
+            line-height: 1.4em;
+            background: rgba(255, 255, 255, 0.7);
+        }
+
+        article img {
+            width: 100%;
+            height: auto;
+            border: 2px solid white;
+            border-radius: 3px;
+        }
+
+
+
+
+
+
+    </style>
+</head>
+<body>
+<section class="main">
+    <!--菜单头部-->
+    <header class="title">
+        图标变形过渡效果缩放式菜单
+    </header>
+
+    <!--菜单第一个栏目项-->
+    <section>
+        <button>
+            图标
+        </button>
+
+        <header>#300x100 淡色系</header>
+
+        <div>
+
+            <article>
+                <img src="http://www.gbtags.com/gb/laitu/300x100" alt="">
+            </article>
+
+        </div>
+    </section>
+    <!--菜单第二个栏目项-->
+    <section>
+        <button>
+            图标
+        </button>
+
+        <header>#300x100 暗色系</header>
+
+        <div>
+
+            <article>
+                <img src="http://www.gbtags.com/gb/laitu/300x100/666666/ffffff" alt="">
+            </article>
+
+        </div>
+    </section>
+
+</section>
+</body>
+</html>

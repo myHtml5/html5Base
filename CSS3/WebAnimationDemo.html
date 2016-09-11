@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>使用animate.css让你的网站动起来</title>
+
+    <style>
+        @import url("../css/animate.css");
+
+        img{
+            -webkit-border-radius: 50%;
+            -moz-border-radius: 50%;
+            border-radius: 50%;
+        }
+
+        /*  可能大家在项目中并不需要使用过多的动画效果，或者需要自定义自己需要的动画效果，
+            那么我们可以方便使用animate.css的代码作为基础，生成自定义的动画效果，
+            如下定义一个自定义版本的跳跃效果：
+        */
+        /*自定义animate.css动画*/
+        .animated {
+            -webkit-animation-duration: 3s;
+            animation-duration: 3s;
+            -webkit-animation-fill-mode: both;
+            animation-fill-mode: both;
+        }
+
+        .animated.infinite {
+            -webkit-animation-iteration-count: infinite;
+            animation-iteration-count: infinite;
+        }
+
+        @-webkit-keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                -webkit-transform: translateY(0);
+                transform: translateY(0);
+            }
+
+            40% {
+                -webkit-transform: translateY(-30px);
+                transform: translateY(-30px);
+            }
+
+            60% {
+                -webkit-transform: translateY(-15px);
+                transform: translateY(-15px);
+            }
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                -webkit-transform: translateY(0);
+                -ms-transform: translateY(0);
+                transform: translateY(0);
+            }
+
+            40% {
+                -webkit-transform: translateY(-30px);
+                -ms-transform: translateY(-30px);
+                transform: translateY(-30px);
+            }
+
+            60% {
+                -webkit-transform: translateY(-15px);
+                -ms-transform: translateY(-15px);
+                transform: translateY(-15px);
+            }
+        }
+
+        .bounce {
+            -webkit-animation-name: bounce;
+            animation-name: bounce;
+        }
+
+    </style>
+    <script src="../js/jquery-2.2.1.min.js"></script>
+</head>
+<body>
+    <!--
+        使用animate.css步骤
+        1.引入css样式文件  @import url("../css/animate.css");
+        2.添加一个需要动画效果的页面元素
+    -->
+    <!--animated代表使用动画 bounce代表动画效果类型 infinite代表无限执行动画 -->
+
+    <!--使用animate已有的动画效果-->
+    <img class="animated bounce infinite" src="http://www.gbtags.com/gb/laitu/150x150" alt="">
+    <img class="animated flash infinite" src="http://www.gbtags.com/gb/laitu/150x150" alt="">
+    <img class="animated pulse infinite" src="http://www.gbtags.com/gb/laitu/150x150" alt="">
+    <img class="animated tada infinite" src="http://www.gbtags.com/gb/laitu/150x150" alt="">
+
+    <!-- 更多效果请自行阅读代码或者访问：http://daneden.github.io/animate.css/ -->、
+
+    <!--自定义动画-->
+    <img class="animated bounce infinite" src="http://www.gbtags.com/gb/laitu/150x150" alt="">
+
+    <!--使用jq控制img动画-->
+    <img src="http://www.gbtags.com/gb/laitu/150x150" alt="">
+
+    <script>
+        $('img').click(function(){
+            var $this = $(this);
+            //为了能够多次点击生成动画，这里监听了css3动画结束事件，然后删除对应元素的类定义。
+            $this.addClass('animated bounce').on('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend',function(){
+                $this.removeClass();
+            });
+        });
+    </script>
+
+</body>
+</html>

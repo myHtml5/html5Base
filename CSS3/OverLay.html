@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>悬浮层图标导航</title>
+
+    <style>
+        @import url('http://cdn.gbtags.com/font-awesome/4.1.0/css/font-awesome.min.css');
+        body{
+            font-family: 'microsoft yahei',Arial,sans-serif;
+            margin:0;
+            padding:0;
+        }
+
+        .bigbtn{
+            position: absolute;
+            font-size: 24px;
+            background: #8d48ed;
+            padding: 15px;
+            color: #FFF;
+            border: none;
+            outline: none;
+            font-family: 'microsoft yahei',Arial,sans-serif;
+            opacity: .8;
+            top: 50%;
+            left: 50%;
+            -webkit-transform: translate(-50%,-50%);
+            transform: translate(-50%,-50%);
+            cursor: pointer;
+        }
+
+        /* 定义悬浮层 */
+        .overlay{
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top:0;
+            left: 0;
+            background: rgba(141,72,137,0.9);
+        }
+
+        /* 定义悬浮层关闭按钮 */
+        .overlay .overlay-close{
+            width: 60px;
+            height: 60px;
+            cursor: pointer;
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            overflow: hidden;
+            border: none;
+            outline:none;
+            z-index: 100;
+            background-color: transparent;
+        }
+        /*设置关闭按钮图标字体颜色为白色*/
+        .overlay .overlay-close i{
+            color: #fff;
+        }
+
+        /* 定义悬浮层导航菜单内容 */
+        .overlay nav{
+            text-align: center;
+            position: relative;
+            height: 60%;
+            top: 50%;
+            -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+        }
+
+        .overlay ul {
+            display: inline-block;
+            height: 100%;
+        }
+
+        .overlay ul li{
+            display:block;
+            height: 25%;
+            height: calc(100%/4);
+            min-height: 60px;
+        }
+
+        .overlay ul li a{
+            font-size: 34px;
+            display: block;
+            color: #fff;
+            text-decoration: none;
+            opacity: .8;
+            -webkit-transition: color 0.3s;
+            transition: color 0.3s;
+        }
+
+        .overlay ul li a:hover,
+        .overlay ul li a:focus {
+            color: #EFEFEF;
+        }
+
+        /* 无特效的实现 */
+        .overlay-noeffect{
+            opacity:0;
+            visibility: hidden;
+        }
+
+        .overlay-noeffect.open{
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* 其它特效 */
+
+        /* 特效一: 下方滑入效果 */
+
+        .overlay-slideup{
+            opacity:0;
+            visibility: hidden;
+            -webkit-transform: translateY(100px);
+            transform: translateY(100px);
+            -webkit-transition: opacity 0.5s, -webkit-transform 0.5s;
+            transition: opacity 0.5s, transform 0.5s, visibility 0.5s;
+        }
+
+        .overlay-slideup.open{
+            opacity: 1;
+            visibility: visible;
+            -webkit-transform: translateY(0%);
+            transform: translateY(0%);
+            -webkit-transition: opacity 0.5s, -webkit-transform 0.5s;
+            transition: opacity 0.5s, transform 0.5s;
+        }
+
+        /* 特效二：左上方滑入效果 */
+        .overlay-slidedownright{
+            opacity:0;
+            visibility: hidden;
+            -webkit-transform: translateY(-100px) translateX(-100px);
+            transform: translateY(-100px) translateX(-100px);
+            -webkit-transition: opacity 0.5s, -webkit-transform 0.5s;
+            transition: opacity 0.5s, transform 0.5s, visibility 0.5s;
+        }
+
+        .overlay-slidedownright.open{
+            opacity: 1;
+            visibility: visible;
+            -webkit-transform: translateY(0%) translateX(0%);
+            transform: translateY(0%) translateX(0%);
+            -webkit-transition: opacity 0.5s, -webkit-transform 0.5s;
+            transition: opacity 0.5s, transform 0.5s;
+        }
+
+        /* 特效三：旋转式 */
+        .overlay-rotate{
+            opacity:0;
+            visibility: hidden;
+            -webkit-transform: rotateX(60deg);
+            transform: rotateX(60deg);
+            -webkit-transition: opacity 0.5s, -webkit-transform 0.5s;
+            transition: opacity 0.5s, transform 0.5s, visibility 0.5s;
+        }
+
+        .overlay-rotate.open{
+            opacity: 1;
+            visibility: visible;
+            -webkit-transform: rotateX(0deg);
+            transform: rotateX(0deg);
+            -webkit-transition: opacity 0.5s, -webkit-transform 0.5s;
+            transition: opacity 0.5s, transform 0.5s;
+        }
+
+
+    </style>
+    <script src="../js/jquery-2.2.1.min.js"></script>
+</head>
+<body>
+    <button class="bigbtn"><i class="fa fa-arrows-alt"></i> 悬浮层效果</button>
+
+    <!--悬浮层控制原理：通过控制悬浮层的透明属性来控制悬浮层的出现和消失-->
+    <!--定义悬浮层-->
+    <div class="overlay overlay-rotate ">
+        <!--关闭按钮-->
+        <button class="overlay-close"><i class="fa fa-times fa-3x"></i></button>
+        <nav>
+            <ul class="fa-ul">
+                <li><a href="#"><i class="fa-li fa fa-code fa-lg"></i>代码</a> </li>
+                <li><a href="#"><i class="fa-li fa fa-crop fa-lg"></i>设计</a> </li>
+                <li><a href="#"><i class="fa-li fa fa-adjust fa-lg"></i>界面</a> </li>
+                <li><a href="#"><i class="fa-li fa fa-wheelchair fa-lg"></i>体验</a> </li>
+            </ul>
+        </nav>
+    </div>
+
+
+    <script>
+        $(document).ready(function(){
+            /* 添加相关JS */
+            $(".bigbtn").click(function(){
+                $('.overlay').addClass('open');
+            });
+
+            /* 添加关闭按钮js */
+            $('.overlay-close').click(function(){
+                $('.overlay').removeClass('open');
+            });
+        });
+    </script>
+</body>
+</html>

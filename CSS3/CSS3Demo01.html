@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>使用CSS3创建具有光晕效果的菜单</title>
+    <style>
+        /*基础CSS*/
+        body{
+            font-family: 'microsoft yahei',Arial,sans-serif;
+            font-size: 24px;
+            background-color: #000;
+            color: #fff;
+        }
+
+        header{
+            width: 100%;
+        }
+
+        nav{
+            width: 1200px;
+            margin: 10px auto;
+            background-color: #222;
+            -webkit-border-radius: 10px;
+            -moz-border-radius: 10px;
+            border-radius: 10px;
+        }
+
+
+        nav li{
+            list-style:none;
+            display: inline-block;
+            padding:8px;
+            position:relative;
+        }
+
+
+        nav li a{
+            text-decoration: none;
+            position:relative;
+            padding: 8px 0;
+            color: #40c0cb;
+        }
+
+        .desc{
+            text-align:center;
+            font-size:15px;
+        }
+
+
+
+
+        /* 光晕效果代码 */
+        nav li a:after{ /*针对a标签后定义一个伪元素*/
+            content: '';
+            width: 0%;
+            margin-left: 50%;
+            height: 3px;
+            left: 0;
+            bottom: 0;
+            position: absolute;
+            -webkit-border-radius: 70%;
+            -moz-border-radius: 70%;
+            border-radius: 70%;  /*添加圆角*/
+            -webkit-transition: all 1.2s;
+            -moz-transition: all 1.2s;
+            -ms-transition: all 1.2s;
+            -o-transition: all 1.2s;
+            transition: all 1.2s; /*添加过度效果*/
+        }
+
+        nav li a:hover:after{
+            background-color: #40C0CB;
+            width: 120%;
+            margin-left: -10%;
+            -webkit-box-shadow: 0 0 15px #40C0CB; /*针对伪元素生成15元素模糊效果*/
+            -moz-box-shadow: 0 0 15px #40C0CB;
+            box-shadow: 0 0 15px #40C0CB;
+        }
+
+        nav li a.selected:after{ /*菜单激活样式*/
+            background-color: #40C0CB;
+            width: 120%;
+            margin-left: -10%;
+            -webkit-box-shadow: 0 0 15px #40C0CB;
+            -moz-box-shadow: 0 0 15px #40C0CB;
+            box-shadow: 0 0 15px #40C0CB;
+        }
+
+        .content{
+            width: 400px;
+            height: 400px;
+            border: 1px solid #FFFFFF;
+
+            box-shadow:100px 50px 30px #888888;
+        }
+
+    </style>
+
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#" class="selected">首页</a> </li>
+                <li><a href="#">产品</a> </li>
+                <li><a href="#">服务</a> </li>
+                <li><a href="#">联系我们</a> </li>
+            </ul>
+        </nav>
+        <div class="desc">
+            CSS3实现光晕效果的菜单
+        </div>
+
+    </header>
+
+    <div class="content">
+
+    </div>
+</body>
+</html>

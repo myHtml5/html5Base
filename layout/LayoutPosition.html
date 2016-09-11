@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS布局 - position使用</title>
+    <style>
+        .container{
+            position: relative;/*相对定位，可以通过调整container位置实现整体布局调整*/
+            border: 1px solid #FF0000;
+        }
+        nav{
+            position: absolute;  /*绝对定位*/
+            left: 0px;
+            width: 100px;
+            border: 1px solid green;
+            height: 300px; /* 缩小高度后，可以看到显示正常了*/
+        }
+
+        section{
+            margin-left: 100px;
+            border: 1px solid orange;
+            height: 100px;  /* 这里我们修改section高度 */
+        }
+
+
+
+    </style>
+</head>
+<body>
+    <!--定义布局容器-->
+    <div class="container">
+        <!--定义导航内容-->
+        <nav>
+            <ul>
+                <li>导航01</li>
+                <li>导航02</li>
+                <li>导航03</li>
+                <li>导航04</li>
+                <li>导航05</li>
+            </ul>
+        </nav>
+        <!--定义布局内容-->
+        <section>
+            section定义的margin-left保证了导航元素拥有足够的显示空间
+        </section>
+        <section>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis sit et quas dolore eos a sequi non nihil nesciunt obcaecati possimus quidem atque magni voluptate quis provident velit expedita. Ipsam!
+        </section>
+        <section>
+            这个布局看起来完美，其实有一个瑕疵，如果左侧导航的高度高于右侧的内容，会有一个溢出容器问题
+        </section>
+    </div>
+</body>
+</html>

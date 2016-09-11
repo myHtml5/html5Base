@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS布局 - 已知高度和宽度元素水平垂直居中</title>
+
+    <style>
+        /*
+            解决方案：
+            将设置元素绝对定位，并且设置margin-left和margin-right为居中元素(高度或宽度/2)的负值即可
+        */
+        div {
+            width: 300px;
+            height: 300px;
+            background-color: #cccccc;
+            color: #FF0000;
+        }
+
+        .item{
+            top:50%;
+            left: 50%;
+            position: absolute;
+            margin-top: -150px;
+            margin-left: -150px;
+        }
+    </style>
+</head>
+<body>
+    <!--
+        居中类型；水平垂直居中（已知元素的高度和宽度）
+        居中元素：
+    -->
+
+    <div class="item">
+        居中类型；水平垂直居中（已知元素的高度和宽度）
+    </div>
+</body>
+</html>

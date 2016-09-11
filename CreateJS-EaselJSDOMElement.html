@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CreateJS-EaselJS DOM ELement</title>
+    <script src="js/easeljs-0.8.2.min.js"></script>
+</head>
+<body>
+    <div id="div" style="width: 200px;height: 200px;background-color: #1b6d85">
+        <button id="btn" width="100px" height="50px" onclick="alert('Hello')">按钮</button>
+    </div>
+
+    <canvas id="gameView" width="960px" height="400px"></canvas>
+
+    <script>
+        var stage,container,canvas;
+
+        canvas = document.getElementById("gameView");
+        stage = new createjs.Stage(canvas);
+
+        container = new createjs.Container();
+        stage.addChild(container);
+
+        //移动container后，Container中的元素,如div也跟着移动
+        container.x = 100;
+        container.y = 100;
+
+        var content = new createjs.DOMElement("div");
+        container.addChild(content);
+
+        stage.update();
+
+    </script>
+</body>
+</html>

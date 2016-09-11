@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS布局 - Flex Box 横向布局</title>
+
+    <style>
+        /*
+            首先定义flexbox布局
+        */
+        .flexboxlayout{
+            display: flex;
+            display: -webkit-flex; /*Safari仍然使用特定的浏览器前缀*/
+            flex-direction: row; /*这是布局的缺省设置*/
+            -webkit-flex-direction: row;
+
+            /*在flexbox横向布局中，align-items控制子元素上下对齐方式 flex-start:居上对齐   flex-end:居下对齐  center:居中对齐*/
+            align-items: center;
+            -webkit-align-items: center;
+
+            /*在flexbox布局中，justify-content控制子元素左右对齐方式，flex-start:居左对齐  flex-end:居右对齐 center:居中对齐*/
+            justify-content: center;
+            -webkit-justify-content: center;
+
+            border: 1px solid #FF0000;
+            height: 600px;
+        }
+
+        /*
+            定义flexbox容器中的子元素
+            如果修改子元素宽度，比如，宽度设为300px，可以看到flexbox布局的强大之处，它不会溢出父元素容器的最大宽度，只会自适应父元素，除非父元素的宽度变化，子元素才会修改自身的宽度来适应。
+        */
+        .flexboxlayout>.item{
+            width: 100px; /*为了看看flexbox布局和传统布局有什么不同，我们设置宽度更大，如：300px*/
+            height: 50px;
+            background: #DD4814;
+            margin: 5px;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="flexboxlayout">
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+    </div>
+</body>
+</html>

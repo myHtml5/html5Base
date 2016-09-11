@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS布局 - 已知高度的块状元素垂直居中</title>
+    <style>
+        /*
+            解决方案：将待居中元素设置为绝对定位，并且设置margin-top为居中元素高度一半的负值
+        */
+
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: #222;
+            color: #fff;
+        }
+
+        .item{
+            top:50%;
+            margin-top: -100px;
+            position: absolute;
+            padding: 0px;
+        }
+
+
+    </style>
+</head>
+<body>
+    <!--
+        居中类型：垂直居中
+    `   居中元素：块状类型元素，如，div
+    -->
+    <div class="item">
+        已知高度的块状元素垂直居中设置
+        <br>
+        解决方案：将待居中元素设置为绝对定位，并且设置margin-top为居中元素高度一半的负值
+    </div>
+</body>
+</html>

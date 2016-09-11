@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS3实现彩带效果</title>
+    <style>
+        /* 彩带主体样式 */
+        .ribbon {
+            font-size: 14px !important;
+            font-family: 'microsoft yahei',Arial,sans-serif;
+            font-weight: normal;
+
+            max-width: 50%;
+
+            position: relative;
+            background: orange;
+            color: #fff;
+            text-align: center;
+            padding: 1em 2em; /* Adjust to suit */
+            margin: 2em auto 3em; /* Based on 24px vertical rhythm. 48px bottom margin - normally 24 but the ribbon 'graphics' take up 24px themselves so we double it. */
+        }
+
+        /* 彩带左右伪选择器生成的领结花 */
+        .ribbon:before, .ribbon:after {
+            content: "";
+            position: absolute;
+            display: block;
+            bottom: -1em;
+            border: 1.5em solid #efb73e;
+            z-index: -1;
+        }
+
+        /* 定位领结花 */
+        .ribbon:before {
+            left: -2em;
+            border-right-width: 1.5em;
+            /*切割方块生成左领结*/
+            border-left-color: transparent;
+        }
+
+        .ribbon:after {
+            right: -2em;
+            border-left-width: 1.5em;
+            /*切割方块生成右领结*/
+            border-right-color: transparent;
+        }
+
+        /* 生成领结阴影 */
+        .ribbon .ribbon-content:before, .ribbon .ribbon-content:after {
+            content: "";
+            position: absolute;
+            display: block;
+            border-style: solid;
+            border-color: #999 transparent transparent transparent;
+            bottom: -1em;
+        }
+
+        /* 定位阴影位置 */
+        .ribbon .ribbon-content:before {
+            left: 0;
+            border-width: 1em 0 0 1em;
+        }
+
+        .ribbon .ribbon-content:after {
+            right: 0;
+            border-width: 1em 1em 0 0;
+        }
+
+    </style>
+</head>
+<body>
+    <!--此元素生成彩带主体并且使用两个伪元素生成彩带两边领结花-->
+    <h1 class="ribbon">
+        <!--此元素为彩带内容，并且使用两个伪元素生成左右的阴影效果-->
+        <span class="ribbon-content">CSS3实现的彩带效果</span>
+    </h1>
+</body>
+</html>

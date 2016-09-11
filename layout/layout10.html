@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS布局 - 水平垂直居中（使用flex实现）</title>
+
+    <style>
+        /*
+        解决方案：设置flex布局，并且定义居中元素的父元素justify-content和align-items属性为center即可
+        */
+
+        .parent{
+            display: flex;
+            justify-content:center;
+            align-items: center;
+
+            /* 注意这里需要设置高度来查看垂直居中效果 */
+            background: #AAA;
+            height: 300px;
+        }
+
+        .item{
+            background: #222;
+            color: #FFF;
+            width: 100px;
+            height: 100px;
+
+        }
+
+
+    </style>
+
+</head>
+<body>
+    <!--
+        居中类型：垂直和水平同时居中 -  使用Flexbox方式
+    -->
+    <div class="parent">
+        <div class="item">
+
+        </div>
+    </div>
+</body>
+</html>

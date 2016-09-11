@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CreateJS - EaselJS 绘制图形 Graphics</title>
+    <script src="js/easeljs-0.8.2.min.js"></script>
+</head>
+<body>
+    <canvas id="gameView" width="400px" height="400px" style="background-color: #cccccc;"></canvas>
+    <script>
+        var stage = new createjs.Stage("gameView"); //Stage 用以包含所有Canvas元素的容器根对象
+
+        var gameContainer = new createjs.Container();  //Container 可以包含一组对象的容器对象，可以让你把多个对象作为一个组来操作。
+
+        stage.addChild(gameContainer);
+
+        //绘制矩形
+        var Rect = new createjs.Shape(); //Shape  在显示列表上下文中通过Graphics Object渲染矢量图
+        Rect.graphics.beginFill("#FF00FF"); //Graphics 提供一个简单却又强的绘制适量图形的API
+        Rect.graphics.drawRect(0,10,100,80);
+        gameContainer.addChild(Rect);
+
+        //绘制椭圆
+        var Ellipse = new createjs.Shape();
+        Ellipse.graphics.beginFill("#FFFF00");
+        Ellipse.graphics.drawEllipse(120,10,100,80);
+        gameContainer.addChild(Ellipse);
+
+        //绘制图形
+        var Circle = new createjs.Shape();
+        Circle.graphics.beginFill("#00FF00");
+        Circle.graphics.drawCircle(300,100,50);
+        gameContainer.addChild(Circle);
+
+        stage.update();
+
+    </script>
+</body>
+</html>

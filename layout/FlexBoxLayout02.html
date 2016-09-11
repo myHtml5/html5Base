@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS布局 - Flex Box 纵向布局</title>
+
+    <style>
+        /*
+            首先定义flexbox布局
+        */
+        .flexboxlayout{
+            display: flex;
+            display: -webkit-flex; /*Safari仍然使用特定的浏览器前缀*/
+            flex-direction: column; /*纵向布局*/
+            -webkit-flex-direction: column;
+
+            /* 这里定义align-items ：控制纵向布局中子元素的左右对齐方式 */
+            align-items:center; /* 如果设置为flex-end, 则居右,flex-start-居左   center居中*/
+            -webkit-align-items: center;
+
+            /* 定义justify-content ：控制纵向布局中子元素的上下对齐方式 */
+            justify-content: center;  /* 如果设置为flex-end，则居于底端  center居中*/
+            -webkit-justify-content: center;
+
+
+
+
+            height:400px;
+            border: 1px solid #FF0000;
+        }
+
+        /*
+            定义flexbox容器中的子元素
+            如果修改子元素宽度，比如，宽度设为300px，可以看到flexbox布局的强大之处，它不会溢出父元素容器的最大宽度，只会自适应父元素，除非父元素的宽度变化，子元素才会修改自身的宽度来适应。
+        */
+        .flexboxlayout>.item{
+            width: 300px; /*为了看看flexbox布局和传统布局有什么不同，我们设置宽度更大，如：300px*/
+            height: 50px;
+            background: #DD4814;
+            margin: 5px;
+
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="flexboxlayout">
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+    </div>
+</body>
+</html>

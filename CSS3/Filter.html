@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS3-滤镜属性</title>
+    <style>
+        body{
+            margin: 0px;
+            padding: 0px;
+        }
+        div{
+            width: 100%;
+            height: 25vmax; /* vmax代表占据最大viewport的百分比，这里占据33%最大viewport */
+            background: #efb73e;
+            opacity: .8;
+            /* 添加CSS3动画 */
+            -webkit-animation: hue-animation 8s 0s linear infinite;
+            animation: hue-animation 8s 0s linear infinite;
+        }
+
+        /*div:nth-child(1){*/
+            /*-ms-filter: hue-rotate(0deg); !* 0度则不变，维持原色，可以是任何度数，但每360度完成一次完整变化 *!*/
+            /*-webkit-filter: hue-rotate(0deg);*/
+            /*filter: hue-rotate(0deg);*/
+        /*}*/
+
+        /*div:nth-child(2){*/
+            /*-ms-filter: hue-rotate(90deg);*/
+            /*-webkit-filter: hue-rotate(90deg);*/
+            /*filter: hue-rotate(90deg);*/
+        /*}*/
+
+        /*div:nth-child(3){*/
+            /*-ms-filter: hue-rotate(180deg);*/
+            /*-webkit-filter: hue-rotate(180deg);*/
+            /*filter: hue-rotate(180deg);*/
+        /*}*/
+
+        /*div:nth-child(4){*/
+            /*-ms-filter: hue-rotate(270deg);*/
+            /*-webkit-filter: hue-rotate(270deg);*/
+            /*filter: hue-rotate(270deg);*/
+        /*}*/
+
+
+        /* 定义keyframe动画 */
+
+        @keyframes hue-animation {
+            0%{
+                -webkit-filter: hue-rotate(0deg);
+                filter: hue-rotate(0deg);
+            }
+
+            100%{
+                -webkit-filter: hue-rotate(360deg);
+                filter: hue-rotate(360deg);
+            }
+        }
+
+        /* 其它浏览器兼容代码 */
+        @-webkit-keyframes hue-animation {
+            0%{
+                -webkit-filter: hue-rotate(0deg);
+                filter: hue-rotate(0deg);
+            }
+
+            100%{
+                -webkit-filter: hue-rotate(360deg);
+                filter: hue-rotate(360deg);
+            }
+        }
+
+
+
+
+    </style>
+</head>
+<body>
+    <div>CSS3的滤镜属性hue-rotate可以控制显示颜色变化，使用如下的格式：0deg为原色;每360度轮换一圈颜色</div>
+    <div></div>
+    <div></div>
+    <div></div>
+
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS动画基础</title>
+
+    <style>
+        /*定义动画  first- 动画名称*/
+        @keyframes first {
+            0%   {opacity: 1;}
+            100% {opacity: 0.1;}
+        }
+
+        /*兼容Chrome浏览器*/
+        @-webkit-keyframes first  {
+            0%   {opacity: 1;}
+            100% {opacity: 0.1;}
+        }
+        /*兼容FireFox浏览器*/
+        @-moz-keyframes  first {
+            0%   {opacity: 1;}
+            100% {opacity: 0.1;}
+        }
+        /*兼容Opera浏览器*/
+        @-o-keyframes first {
+            0%   {opacity: 1;}
+            100% {opacity: 0.1;}
+        }
+
+        div{
+            width: 200px;
+            height: 200px;
+            background: orange;
+        }
+
+        /* 指定元素使用已定义的动画 */
+        #logo{
+            -webkit-animation-name: first;
+            -webkit-animation-duration: 3s;
+            -webkit-animation-timing-function: linear;
+            -webkit-animation-delay: 1s;
+            -webkit-animation-iteration-count: 10;
+            -webkit-animation-direction: alternate;
+            -webkit-animation-play-state: running;
+
+            -moz-animation-name: first;
+            -moz-animation-duration: 3s;
+            -moz-animation-timing-function: linear;
+            -moz-animation-delay: 1s;
+            -moz-animation-iteration-count: 10;
+            -moz-animation-direction: alternate;
+            -moz-animation-play-state: running;
+
+            -o-animation-name: first;
+            -o-animation-duration: 3s;
+            -o-animation-timing-function: linear;
+            -o-animation-delay: 1s;
+            -o-animation-iteration-count: 10;
+            -o-animation-direction: alternate;
+            -o-animation-play-state: running;
+
+            animation-name: first;  /*动画名称*/
+            animation-duration: 3s;               /*动画持续时间*/
+            animation-timing-function: linear;   /*规定动画的速度曲线 linear-动画从头到尾的速度是相同的 ease-默认。动画以低速开始，然后加快，在结束前变慢。*/
+            animation-delay: 1s;                   /*规定动画何时开始。默认是 0*/
+            animation-iteration-count: 10;       /*规定动画被播放的次数。默认是 1。*/
+            animation-direction: alternate;      /*规定动画是否在下一周期逆向地播放。默认是 "normal"。*/
+            animation-play-state: running;       /*定动画是否正在运行或暂停。默认是 "running"。*/
+        }
+
+        /*快捷方法定义动画*/
+        #logo_shortcut{
+            -webkit-animation: first 3s linear 1s 10 alternate;
+            -moz-animation: first 3s linear 1s 10 alternate;
+            -o-animation: first 3s linear 1s 10 alternate;
+            animation: first 3s linear 1s 10 alternate;
+        }
+
+    </style>
+
+</head>
+<body>
+      <div id="logo">
+
+      </div>
+      <br>
+      <div id="logo_shortcut">
+
+      </div>
+
+</body>
+</html>

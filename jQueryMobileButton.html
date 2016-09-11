@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>jQuery Mobile Button</title>
+    <link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.4.5.min.css">
+    <script src="js/jquery-2.2.1.min.js"></script>
+    <script src="js/jquery.mobile-1.4.5.min.js"></script>
+</head>
+<body>
+    <div data-role="page">
+        <div data-role="header"><h1>头部</h1></div>
+        <div data-role="content">
+            <button>按钮</button>
+            <input type="button" value="按钮">
+            <a  href="#" class="ui-btn ui-shadow">按钮</a>
+            <!--jQuery Mobile 中的按钮会自动获得样式，这增强了他们在移动设备上的交互性和可用性。
+            我们推荐您使用 data-role="button" 的 <a> 元素来创建页面之间的链接，而 <input> 或 <button> 元素用于表单提交。-->
+            <a data-role="button">按钮</a>
+
+            <!--行内按钮 默认情况下，按钮会占据屏幕的全部宽度。如果您需要按钮适应其内容，或者如果您需要两个或多个按钮并排显示，请添加 data-inline="true"：-->
+            <a href="#" data-role="button" data-inline="true">行内按钮1</a>
+            <a href="#" data-role="button" data-inline="true">行内按钮2</a>
+            <a href="#" data-role="button" data-inline="true">行内按钮3</a>
+            <a href="#" data-role="button" data-inline="true">行内按钮4</a>
+
+
+            <!--组合按钮
+                默认情况下，组合按钮是垂直分组的，彼此间没有外边距和空白。并且只有第一个和最后一个按钮拥有圆角，在组合后就创造出了漂亮的外观。
+            -->
+            <!--
+                按钮图标   data-icon="arrow-l"  图标位置  data-iconpos="top" 默认地，所有按钮中的图标靠左放置。
+                只显示图标   data-iconpos="notext"
+            -->
+            <div data-role="controlgroup" data-type="horizontal">
+                <a href="#" data-role="button" data-icon="arrow-l">左箭头</a>
+                <a href="#" data-role="button" data-icon="arrow-r">右箭头</a>
+                <a href="#" data-role="button" data-icon="delete">删除</a>
+                <a href="#" data-role="button" data-icon="info">信息</a>
+                <a href="#" data-role="button" data-icon="home">首页</a>
+                <a href="#" data-role="button" data-icon="back">返回</a>
+                <a href="#" data-role="button" data-icon="search">搜索</a>
+                <a href="#" data-role="button" data-icon="grid" data-iconpos="notext">网格</a>
+            </div>
+
+        </div>
+        <div data-role="footer"><h1>脚部</h1></div>
+    </div>
+</body>
+</html>

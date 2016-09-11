@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS布局 - overflow属性</title>
+    <style>
+        img{
+            float: right;
+        }
+        /* 定义div属性，方便我们看清楚具体的布局位置*/
+        div{
+            border: 1px solid green;
+            padding: 10px;
+        }
+
+        .clearfix{
+            overflow:auto;
+            /* 目前这段代码只支持现代浏览器，如果需要支持IE6，那么加入如下代码*/
+            zoom: 1;
+        }
+
+
+
+
+    </style>
+</head>
+<body>
+
+<!--添加clearfix class定义到此元素 //-->
+<div class="clearfix">
+    <!-- 定义一个图片 //-->
+    <img src="http://www.gbtags.com/gb/networks/uploadimg/d72f284c-c729-4de7-ba3e-b93587cb1446.jpg" alt="">
+    <p>hello, gbtags.com</p>
+</div>
+</body>
+</html>

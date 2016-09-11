@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS布局-flexbox布局-控制flex子元素的横纵向折行显示</title>
+    <style>
+        .flexbox{
+            display: flex;
+            display: -webkit-flex;
+
+            align-items: center;
+            -webkit-justify-content: center;
+
+            justify-content: center;
+            -webkit-justify-content: center;
+
+            flex-direction: row;
+            -webkit-flex-direction: row;
+
+            /* 以下定义flex折行  */
+            /*
+                在flexbox布局中，缺省情况下flex子元素会自适应父元素的宽度，如果你不希望它自己自主改变宽度的话，可以使用flex-wrap属性来保持原设定宽度，如果超出宽度则会自动折行
+            */
+            flex-wrap:wrap;
+            -webkit-flex-wrap:wrap;
+
+            /*如果希望flex元素按Y轴折行的话*/
+            flex-flow: column wrap; /* 这里flex-flow的缺省值是row wrap，如果修改成column wrap，将看到变成纵向的折行 */
+            -webkit-flex-wrap: column wrap;
+
+
+            /* 下面我们可以调整子元素的对齐方式，使用align-content属性-/*CSS源代码*/
+
+        .flexboxlayout{
+            display:flex;
+            display: -webkit-flex;
+
+            align-items: center;
+            -webkit-justify-content: center;
+
+            justify-content: center;
+            -webkit-justify-content: center;
+
+            flex-direction: row;
+            -webkit-flex-direction: row;
+
+            /* 以下定义flex折行 */
+
+            flex-wrap:wrap;
+            -webkit-flex-wrap:wrap;
+
+            flex-flow: column wrap; /* 这里flex-flow的缺省值是row wrap，如果修改成column wrap，将看到变成纵向的折行 */
+            -webkit-flex-wrap: column wrap;
+
+            /* 下面我们可以调整子元素的对齐方式，使用align-content属性 - 可以帮助你控制折行之间的距离*/
+            /* 合法的值可以是：flex-start, flex-end, space-between, space-around, stretch*/
+
+            align-content: stretch;
+            -web-flex-wrap: stretch;
+
+            width: 500px;
+            height: 300px;
+            background: #666;
+            padding:10px;
+        }
+
+
+        .flexboxlayout > .item{
+            width: 50px;
+            height: 50px;
+            background: orange;
+            margin:5px;
+        }*/
+            /* 合法的值可以是：flex-start, flex-end, space-between, space-around, stretch*/
+
+            align-content: stretch;
+            -web-flex-wrap: stretch;
+
+
+            width: 500px;
+            height: 300px;
+            background: #666;
+            padding:10px;
+
+        }
+
+        .flexbox > .item{
+            width: 50px;
+            height: 50px;
+            background: orange;
+            margin:5px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="flexbox">
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+    </div>
+</body>
+</html>

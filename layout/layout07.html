@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS布局 - 未知高度块状元素垂直居中设置</title>
+    <style>
+        /*
+            解决方案：方法类似上一节使用的方式，因为无法指定margin-top的偏移量，所以这里使用transform属性，垂直移动-50%即可
+        */
+
+        div{
+            width: 200px;
+            background-color: #222;
+            color: #FFF;
+            border:1px solid #FF0000;
+        }
+
+        .item{
+            top:50%;
+            position: absolute;
+            transform: translateY(-50%); /* 这里我们使用css3的transform来达到类似效果 */
+        }
+
+
+    </style>
+</head>
+<body>
+    <!--
+        居中类型：垂直居中
+        居中元素：块状类型元素，如Div，但是不知道元素高度
+    -->
+    <div class="item">
+        居中类型：垂直居中
+        居中元素：块状类型元素，如Div，但是不知道元素高度
+    </div>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>使用CSS3制作个性的复选框</title>
+    <style>
+
+        /*  使用要点：
+            1.CSS3 兄弟选择符(E~F)
+            2.CSS :after 选择器
+            3.神奇的css属性pointer-events
+       */
+
+        body{
+            background:#eee;
+        }
+        .lbl{
+            /*設置複選框背景色*/
+            height:20px;
+            width:50px;
+            display:block;/*元素将显示为块级元素*/
+            background:#ddd;
+            border-radius:20px;/*为元素添加圆角边框*/
+            cursor:pointer;/*鼠标样式*/
+            position:relative;/*相对定位*/
+            transition:all 0.3s ease;/*平滑过渡效果*/
+        }
+        .cbx:checked ~ label{
+            /*設置選中的複選框的兄弟元素label的背景色*/
+            background:#42d842;
+        }
+        .lbl:after{
+            /*在元素的内容后面插入内容*/
+            content:'';
+            width:25px;
+            height:25px;
+            display:block;
+            background:#fff;
+            border-radius:25px;/*为元素添加圆角边框*/
+            box-shadow:0px 3px 3px rgba(0,0,0,0.05);/*为元素设置阴影*/
+            transition:all 0.3s ease;/*平滑过渡效果*/
+            position:absolute;/*绝对定位，父容器使用相对定位，子元素使用绝对定位后，这样子元素的位置不再相对于浏览器左上角，而是相对于父窗口左上角*/
+            /*调整元素位置*/
+            left:-2px;
+            top:-3px;
+        }
+        .cbx:checked ~ label:after{
+            /*改變選中狀態的複選框的兄弟元素label的圈圈位置*/
+            left:25px;
+            background:#fff;
+        }
+        .lbl:active:after{
+            /*设置点击时候圈圈进行缩放动画*/
+            transform:scale(2,0.8);
+        }
+        .hidden{
+            /*隐藏复选框*/
+            display:none;
+        }
+        .cbx:disabled ~ label{
+            /*設置複選框禁用時候的兄弟元素label樣式*/
+            background:#d5d5d5;
+            pointer-events:none;/*阻止点击动作产生效果*/
+        }
+        .cbx:disabled ~ label:after{
+            /*設置複選框禁用時候的兄弟元素label圈圈樣式*/
+            background:#bcbdbc;
+        }
+        .check{
+            /*设置元素的下边距*/
+            margin-bottom:20px;
+        }
+        .content{
+            width:100px;
+            margin:100px auto;/*设置居中*/
+        }
+
+
+
+
+
+    </style>
+</head>
+<body>
+<div class="content">
+    <div class="check">
+        <input type="checkbox" id="uncheckbox" class="cbx hidden" />
+        <label for="uncheckbox" class="lbl"></label><!--for 属性规定 label 与哪个表单元素绑定。-->
+    </div>
+    <!--再來一個禁用的複選框-->
+    <div class="check">
+        <input type="checkbox" id="discheckbox" class="cbx hidden" disabled/>
+        <label for="discheckbox" class="lbl"></label>
+    </div>
+    <!--再來一個选中状态的複選框-->
+    <div class="check">
+        <input type="checkbox" id="checkbox" class="cbx hidden" checked/>
+        <label for="checkbox" class="lbl"></label>
+    </div>
+</div>
+</body>
+</html>

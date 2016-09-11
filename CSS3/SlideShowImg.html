@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>使用jQuery生成水平图片幻灯效果</title>
+    <style>
+        /*幻灯相关的CSS*/
+
+        * {
+            margin:0;
+            padding:0;
+        }
+
+        body {
+            width:550px;
+            margin:85px auto 0;
+            background:#f0eeee;
+            font-family: 'microsoft yahei',Arial,sans-serif;
+        }
+
+        nav{
+            padding: 20px 0px;
+        }
+
+        #slider-nav {
+            display:none;
+            margin-top:1em;
+            text-align:center;
+        }
+
+        #slider-nav button {
+            padding: 15px 30px;
+            font-family: 'microsoft yahei',Arial,sans-serif;
+        }
+
+        .slider {
+            height:200px;
+            overflow:scroll;
+            -webkit-box-shadow:1px 1px 8px 0 rgba(50,50,50,0.75);
+            -moz-box-shadow:1px 1px 8px 0 rgba(50,50,50,0.75);
+            box-shadow:1px 1px 8px 0 rgba(50,50,50,0.75);
+        }
+
+        .slider ul {
+            width:10000px;
+            list-style:none;
+        }
+
+        .slider li {
+            float:left;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="slider">
+        <ul>
+            <li><img src="http://www.gbtags.com/gb/networks/uploads/afb73f09-8334-46b2-ad66-4abeb7c67a0a/images/gbtags1.jpg" alt="image"></li>
+            <li><img src="http://www.gbtags.com/gb/networks/uploads/afb73f09-8334-46b2-ad66-4abeb7c67a0a/images/gbtags2.jpg" alt="image"></li>
+            <li><img src="http://www.gbtags.com/gb/networks/uploads/afb73f09-8334-46b2-ad66-4abeb7c67a0a/images/gbtags3.jpg" alt="image"></li>
+            <li><img src="http://www.gbtags.com/gb/networks/uploads/afb73f09-8334-46b2-ad66-4abeb7c67a0a/images/gbtags4.jpg" alt="image"></li>
+        </ul>
+    </div>
+
+    <div id="slider-nav">
+        <button data-direction="prev"> &laquo;　上一个</button>
+        <button data-direction="next">下一个 &raquo;</button>
+    </div>
+
+    <script src="../js/jquery-2.2.1.min.js"></script>
+    <script>
+        /*生成幻灯效果的Javascript*/
+
+        function Slider( container, nav ) {
+            this.container = container;
+            this.nav = nav.show();
+            this.imgs = this.container.find('img');
+            this.imgWidth = this.imgs[0].width;
+            this.imgsLen = this.imgs.length;
+            this.current = 0;
+        }
+
+        Slider.prototype.transition = function( ) {
+            this.container.animate({
+                'margin-left': -( this.current * this.imgWidth )
+            });
+        };
+
+        Slider.prototype.setCurrent = function( dir ) {
+            var pos = this.current;
+            pos += ( ~~( dir === 'next' ) || -1 );
+            this.current = ( pos < 0 ) ? this.imgsLen - 1 : pos % this.imgsLen;
+            return pos;
+        };
+
+        $(function(){
+            var container = $('.slider').css('overflow', 'hidden').children('ul'),
+                    slider = new Slider( container, $('#slider-nav') );
+
+            slider.nav.find('button').on('click', function() {
+                slider.setCurrent( $(this).data('direction') );
+                slider.transition();
+            });
+        });
+
+    </script>
+</body>
+</html>

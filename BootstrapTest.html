@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!--为了确保适当的绘制和触屏缩放，需要在<head>之中添加viewport元数据标签。-->
+    <!--在移动设备浏览器上，通过为viewport meta标签添加user-scalable=no可以禁用其缩放（zooming）功能。这样禁用缩放功能后，用户只能滚动屏幕，就能让你的网站看上去更像原生应用的感觉-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap框架 使用</title>
+
+    <script src="js/jquery-2.2.1.min.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+<body>
+    <!--响应式图片-->
+    <!--<img src="img/2.jpg" class="img-responsive" alt="Responsive image">-->
+
+    <!--栅格系统-->
+    <!--Bootstrap栅格系统工作原理：
+        "行（row）"必须包含在.container中，以便为其赋予合适的排列（aligment）和内补（padding）
+        使用"行（row）"在水平方向创建一组"列（column）"。
+        你的内容应当放置于"列（column）"内，而且，只有"列（column）"可以作为行（row）"的直接子元素
+        类似Predefined grid classes like .row and .col-xs-4 这些预定义的栅格class可以用来快速创建栅格布局。Bootstrap源码中定义的mixin也可以用来创建语义化的布局。
+        通过设置padding从而创建"列（column）"之间的间隔（gutter）。然后通过为第一和最后一样设置负值的margin从而抵消掉padding的影响。
+
+        栅格系统中的列是通过指定1到12的值来表示其跨越的范围。例如，三个等宽的列可以使用三个.col-xs-4来创建。
+    -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-1">.col-md-1</div>
+            <div class="col-md-1">.col-md-1</div>
+            <div class="col-md-1">.col-md-1</div>
+            <div class="col-md-1">.col-md-1</div>
+            <div class="col-md-1">.col-md-1</div>
+            <div class="col-md-1">.col-md-1</div>
+            <div class="col-md-1">.col-md-1</div>
+            <div class="col-md-1">.col-md-1</div>
+            <div class="col-md-1">.col-md-1</div>
+            <div class="col-md-1">.col-md-1</div>
+            <div class="col-md-1">.col-md-1</div>
+            <div class="col-md-1">.col-md-1</div>
+        </div>
+        <div class="row">
+            <div class="col-md-8">.col-md-8</div>
+            <div class="col-md-4">.col-md-4</div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">.col-md-4</div>
+            <div class="col-md-4">.col-md-4</div>
+            <div class="col-md-4">.col-md-4</div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">.col-md-6</div>
+            <div class="col-md-6">.col-md-6</div>
+        </div>
+    </div>
+
+</body>
+</html>

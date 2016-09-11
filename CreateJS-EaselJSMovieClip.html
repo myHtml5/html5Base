@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CreateJS-EaselJS MovieClip控件</title>
+    <script src="js/easeljs-0.8.2.min.js"></script>
+    <script src="js/easeljs-NEXT.min.js"></script>
+    <script src="js/tweenjs-0.6.2.min.js"></script>
+</head>
+<body>
+    <div>
+        <canvas id="testCanvas" width="960" height="400"></canvas>
+    </div>
+    <script>
+        var stage = new createjs.Stage("testCanvas");
+        createjs.Ticker.addEventListener("tick", stage);
+
+        // Create the MovieClip  MovieClip类将一个tweenjs时间表与easeljs的 Container
+        //构造函数  MovieClip ( [mode=independent]  [startPosition=0]  [loop=true]  [labels=null] )
+        var mc = new createjs.MovieClip(null, 0, true, {start: 0, middle: 40});
+        stage.addChild(mc);
+
+        // Create the States. Each state is just a circle shape.
+        var state1 = new createjs.Shape(
+                new createjs.Graphics().beginFill("#FF0000")
+                        .drawCircle(100, 200, 50));
+
+        var state2 = new createjs.Shape(
+                new createjs.Graphics().beginFill("#6699FF")
+                        .drawCircle(100, 200, 50));
+
+        // Create a tween for each shape, animating from one side to the other.
+        mc.timeline.addTween(
+                createjs.Tween.get(state1)
+                        .to({x: 0}).to({x: 760}, 40).to({x: 0}, 40));
+
+        mc.timeline.addTween(
+                createjs.Tween.get(state2)
+                        .to({x: 760}).to({x: 0}, 40).to({x: 760}, 40));
+
+        // Play the animation starting from the middle. See the MovieClip constructor above where the labels are specified.
+        mc.gotoAndPlay("middle");
+
+
+
+    </script>
+</body>
+</html>

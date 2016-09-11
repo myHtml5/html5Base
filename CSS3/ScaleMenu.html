@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>缩放式菜单</title>
+
+    <style>
+        /*定义所有元素宽度包括边框和内边距*/
+        *{
+            box-sizing: border-box;
+        }
+
+        body{
+            font-family: 'microsoft yahei',Arial,sans-serif;
+            background: #aaa;
+        }
+        section{
+            position:relative;
+            width: 100%;
+        }
+        /*定义整体菜单最大宽度、最小宽度以及整体居中*/
+        section.main{
+            position: absolute;
+            top:50%;
+            left:50%;
+            transform: translate(-50%,-50%);
+            width:50%;
+            max-width:30em;
+            min-width:15em;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        /*定义菜单项目标题样式*/
+        section.main > header{
+            background: orange;
+            color: #fff;
+            line-height: 1.2em;
+            text-align:center;
+        }
+
+        /*最后一个菜单项元素没有边框*/
+        section section:last-child{
+            border:none;
+        }
+        /*定义菜单项目内容样式*/
+        section > div{
+            height: 0;
+            overflow: hidden;
+            transition: all .4s ease-in-out;
+        }
+
+        article,
+        header {
+            padding: 1em;
+            line-height: 1em;
+        }
+
+        header:not(.title) {
+            width: 100%;
+            overflow: hidden;
+            height: 3em;
+            background: #EFEFEF;
+            cursor: pointer;
+            color: #888;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            padding-right: 2.1em;
+        }
+
+        header:not(.title):hover {
+            background: #E8E8E8;
+        }
+
+        article {
+            line-height: 1.4em;
+            background: rgba(255, 255, 255, 0.7);
+        }
+
+        article img {
+            width: 100%;
+            height: auto;
+            border: 2px solid white;
+            border-radius: 3px;
+        }
+
+        /*设置按钮样式*/
+        section button{
+            position: absolute;
+            right:0;
+            margin:0;
+            padding:0;
+            height: 3em;
+            width: 3em;
+            outline:0;
+            border:0;
+            background:none;
+            text-indent: -9999%;  /*从页面可视范围移除按钮*/
+            pointer-events: none;
+        }
+
+        /*在按钮前面、后面添加两个伪元素
+            生成了两个小矩形，通过两个小矩形实现图标形状
+        */
+        section button:before, section button:after{
+            content: '';
+            display: block;
+            position: absolute;
+            width: 4px;
+            height: 12px;
+            background: orange;
+            border-radius: .3em;
+            top: 50%;
+            left: 50%;
+            /*定义过渡效果*/
+            transition: all .3s ease-in-out;
+        }
+        /*通过两个小矩形位移和旋转生成关闭图标X*/
+        section button:after{
+            transform: translate(-75%, -50%) rotate(-45deg);
+        }
+
+        section button:before{
+            transform: translate(75%, -50%) rotate(45deg);
+        }
+
+
+        section.open button:after, section.open button:before{
+            background: red;
+            height: 14px;
+        }
+
+        section.open button:after{
+            transform: translate(-75%, -50%) rotate(-45deg);
+        }
+
+        section.open button:before{
+            transform: translate(-75%, -50%) rotate(45deg);
+        }
+
+
+
+
+    </style>
+    <script src="../js/jquery-2.2.1.min.js"></script>
+</head>
+<body>
+    <section class="main">
+        <!--菜单头部-->
+        <header class="title">
+            图标变形过度效果缩放式菜单
+        </header>
+        <!--菜单第一个项目栏-->
+        <section class="">
+            <button>图标</button>
+            <header>#300*100 淡色系</header>
+            <div>
+
+                <article>
+                    <img src="http://www.gbtags.com/gb/laitu/300x100" alt="">
+                </article>
+
+            </div>
+        </section>
+        <!--第二个菜单项目-->
+        <section class="">
+            <button >图标</button>
+            <header>#300*100 暗色系</header>
+            <div>
+
+                <article>
+                    <img src="http://www.gbtags.com/gb/laitu/300x100/666666/ffffff" alt="">
+                </article>
+
+            </div>
+        </section>
+
+    </section>
+
+    <!--<section class="open">-->
+        <!--<button>-->
+            <!--开启图标-->
+        <!--</button>-->
+    <!--</section>-->
+
+    <script>
+
+        $('section section header').on('click', function(){
+            var $this = $(this),
+                    parent_section = $this.parent(),
+                    closeDiv = $this.siblings('div'),
+                    contentheight = closeDiv.children('article').outerHeight();
+
+            (closeDiv.height() === 0) ? closeDiv.height(contentheight):closeDiv.height(0);
+
+            //切换图标
+
+            $this.parents('section').first().toggleClass('open');
+        });
+
+    </script>
+</body>
+</html>

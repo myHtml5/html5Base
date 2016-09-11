@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS布局 - 水平居中实现方式总结</title>
+
+    <style>
+        /* 一:inline-block+text-align */
+        /* 优点:兼容性非常好,inline-block在IE8以下可以用inline+zoom:1来进行兼容
+        缺点:child会继承text-align:center,需要对子孙元素进行reset */
+        /*.parent{*/
+            /*text-align: center;*/
+        /*}*/
+        /*.child{*/
+            /*display: inline-block;*/
+        /*}*/
+
+        /* 二:table+margin */
+        /* 优点:只需要设置child,IE6 7 child可以采用table的方式 如th tr来实现 table元素宽度变为内容宽度*/
+        /*.child{*/
+          /*display:table;*/
+          /*margin:0 auto;*/
+        /*}*/
+
+        /*
+        三：absolute+transform */
+        /* 优点:子元素设置了absolute不会对其他元素参数影响
+        缺点:应用了CSS3的属性，导致兼容性比较坑. */
+        /* .parent{
+          position:relative;
+        }
+        .child{
+          position:absolute;
+          left:50%;
+          transform:translateX(-50%)
+         参照物为自身宽度的50%，类似于margin-left:-50%px,但是后者需要知道元素的大小
+        } */
+
+        /* 四:flex+justify-content */
+        /* 优点:非常强大的flex布局
+        缺点:不兼容IE10以下- -安卓上支持也不是特别完善 */
+        .parent{
+            display:flex;/* 宽度为内容宽度 */
+            /*  justify-content:center; */
+        }
+        /* 如果不用justify-content那么可以用child */
+        .child{
+            margin:0 auto;
+        }
+
+    </style>
+
+</head>
+<body>
+    <div id="container">
+        <div class="parent">
+            <div class="child" style="background: #cccccc">
+                <h1>水平居中实现方式总结</h1>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

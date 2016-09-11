@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS布局 - 垂直居中实现方式总结</title>
+
+    <style>
+
+        /* 一:table-cell+vertical-align */
+        /* 优点:兼容IE8以上,兼容低版本只需要把HTML结构换成table结构 */
+        /*.parent{*/
+          /*display:table-cell;*/
+          /*vertical-align:middle;  !* 作用在Inline,table-cell,inline-block元素上*!*/
+        /*}*/
+
+        /* 二:absolute+transform */
+        /* 优点:子元素不会对其他元素造成干扰,
+        缺点:兼容性差 */
+        /*.parent{*/
+          /*position:relative;*/
+        /*}*/
+        /*.child{*/
+          /*position:absolute;*/
+          /*top:50%; !*子容器上边对齐父元素中部*!*/
+          /*transform:translateY(-50%);*/
+        }
+
+        /*  三:flex+align-items */
+        /* 优点:万金油的flex布局
+        缺点:兼容性是个问题 */
+        .parent{
+            display:flex; /* 高度撑满整个容器 */
+            justify-content:center;
+            align-items:center /* 垂直居中 */
+        }
+
+     </style>
+
+</head>
+<body>
+    <div id="container">
+        <div class="parent" style="width: 600px;height: 400px;border: solid 1px #000000;">
+            <div class="child" style="background: #cccccc;border:1px solid #FF0000;height: 200px;width: 200px">
+                垂直居中实现方式总结
+            </div>
+        </div>
+    </div>
+</body>
+</html>
